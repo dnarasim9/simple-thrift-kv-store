@@ -7,8 +7,8 @@ RUN apt-get -yqq update
 RUN apt-get -yqq install python-pip python-dev curl mongodb-clients
 
 ## copy our application code
-ADD thrift-server /opt/thrift-server
-WORKDIR /opt/thrift-server
+ADD thrift-kv /opt/thrift-kv
+WORKDIR /opt/thrift-kv
 
 ## fetch app specific deps
 RUN pip install -r requirements.txt
