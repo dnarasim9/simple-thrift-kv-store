@@ -4,6 +4,7 @@ sys.path.append('gen-py')
 from bson.json_util import dumps, loads
 
 from pymongo import MongoClient
+from pymongo import ReturnDocument
 
 from kv import KVService as ThriftKVService 
 
@@ -24,13 +25,17 @@ class ThriftKVHandler(object):
         return dumps(self.collection.insert_one(value).inserted_id)
 
     def read(self, obj_id):
-        return dumps(self.collection.find_one(loads(obj_id)))
+        return dumps(self.collection.find_one({'_id' : loads(obj_id)}))
 
-    def update(self, id, value):
-        pass
+    def update(self, obj_id, value):
+        obj_id = loads(obj_id)
+        value = loads(value)
+        ret = self.collection.find_one_and_replace({'_id': obj_id}, value,
+                return_document=ReturnDocument.AFTER)
+        return dumps(ret)
 
-    def delete(self, id):
-        pass
+    def delete_doc(self, obj_id):
+        self.collection.delete_one({'_id': loads(obj_id)})
 
 if __name__ == "__main__":
     handler = ThriftKVHandler()
