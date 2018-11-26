@@ -16,4 +16,4 @@ docker run --name mongo -d  --rm -p 27017:27017 --net thriftkv-net -v ~/work/dat
 docker run --name thriftkv -d --rm -p 9090:9090 --net thriftkv-net rhaynes385/hc_thrifter
 
 # run integration tests
-#docker exec -it thriftkv python client.py
+# docker exec -it thriftkv python integration-client.py

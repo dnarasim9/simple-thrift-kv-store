@@ -14,5 +14,5 @@ This will execute the compilation of thrift python bindings in a seperate thrift
 
 ##### Running Tests
 ```
-$ docker exec -it thriftkv python client.py
+docker exec -it thriftkv mamba integration-client.py
 ```
