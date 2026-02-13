@@ -1,7 +1,7 @@
-Thrift KV (Interview Programming Assessment
+Thrift KV
 ===
 
-This is a trivial key value store. It uses mongodb as the backend and exposes a trivial CRUD api via thrift and python. There is code to run integration tests against the thrift kv server
+This is a key value store implementation in thrift. It uses mongodb as the backend and exposes a CRUD api via thrift and python. There is code to run integration tests against the thrift kv server
 
 #### Docker Setup
 
